@@ -1,0 +1,138 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ballot | Show Poll</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css" />
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+    <script src="../static/showResults.js"></script>
+    <main>
+      <h1>Show Results</h1>
+
+      {{range .OptionsSubmits}}
+      <h2>{{ .OptionText}} {{ .Votes}}</h2>
+
+      {{end}}
+      <canvas id="myChart" width="400" height="400"></canvas>
+      <script>
+        
+        Chart.defaults.global.legend.display = false;
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: [{{range .OptionsSubmits}}"{{.OptionText}}",{{end}} ],
+            datasets: [
+              {
+                data: [{{range .OptionsSubmits}} {{ .Votes}}, {{end}}],
+                backgroundColor: [
+                  "rgba(255, 99, 132, 0.2)",
+                  "rgba(54, 162, 235, 0.2)",
+                  "rgba(255, 206, 86, 0.2)",
+                  "rgba(75, 192, 192, 0.2)",
+                  "rgba(153, 102, 255, 0.2)",
+                  "rgba(255, 159, 64, 0.2)",
+                ],
+                borderColor: [
+                  "rgba(255, 99, 132, 1)",
+                  "rgba(54, 162, 235, 1)",
+                  "rgba(255, 206, 86, 1)",
+                  "rgba(75, 192, 192, 1)",
+                  "rgba(153, 102, 255, 1)",
+                  "rgba(255, 159, 64, 1)",
+                ],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                    precision: 0,
+                  },
+                },
+              ],
+            },
+          },
+        });
+      </script>
+    </main>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ballot | Show Poll</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+
+  </head>
+  <body class="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0" style="font-family:'Lato',sans-serif;">
+    <header class="max-w-lg mx-auto">
+      <a href="/">
+          <h1 class="text-4xl font-bold text-white text-center">Ballot</h1>
+      </a>
+  </header>
+  
+    <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+        <section>
+            <h3 class="font-bold text-2xl">{{.Question_text}}</h3>
+        </section>
+          <canvas id="myChart" width="400" height="400"></canvas>
+          <script>
+            
+            Chart.defaults.global.legend.display = false;
+            var ctx = document.getElementById("myChart");
+            var myChart = new Chart(ctx, {
+              type: "bar",
+              data: {
+                labels: [{{range .OptionsSubmits}}"{{.OptionText}}",{{end}} ],
+                datasets: [
+                  {
+                    data: [{{range .OptionsSubmits}} {{ .Votes}}, {{end}}],
+                    backgroundColor: [
+                      "rgba(255, 99, 132, 0.2)",
+                      "rgba(54, 162, 235, 0.2)",
+                      "rgba(255, 206, 86, 0.2)",
+                      "rgba(75, 192, 192, 0.2)",
+                      "rgba(153, 102, 255, 0.2)",
+                      "rgba(255, 159, 64, 0.2)",
+                    ],
+                    borderColor: [
+                      "rgba(255, 99, 132, 1)",
+                      "rgba(54, 162, 235, 1)",
+                      "rgba(255, 206, 86, 1)",
+                      "rgba(75, 192, 192, 1)",
+                      "rgba(153, 102, 255, 1)",
+                      "rgba(255, 159, 64, 1)",
+                    ],
+                    borderWidth: 1,
+                  },
+                ],
+              },
+              options: {
+                scales: {
+                  yAxes: [
+                    {
+                      ticks: {
+                        beginAtZero: true,
+                        precision: 0,
+                      },
+                    },
+                  ],
+                },
+              },
+            });
+          </script>
+    </main>
+  </body>
+</html>

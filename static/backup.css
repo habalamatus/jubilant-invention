@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "openSans";
+  src: url("./font/open-sans/OpenSans-Regular.ttf");
+}
+
+body {
+  background-color: #ffffff;
+  font-family: "openSans", Arial, Helvetica, sans-serif;
+}
+
+main {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}

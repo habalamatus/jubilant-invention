@@ -46,7 +46,7 @@ type Option struct {
 
 type OptionSubmit struct {
 	OptionText string
-	Votes      string
+	Votes      int
 }
 
 /*func createOptions(optionArray []option) string {
@@ -231,7 +231,7 @@ func main() {
 		fmt.Println(sqlDisplayVotes)
 		var (
 			option_text string
-			votes       string
+			votes       int
 		)
 		rows, err := db.Query(sqlDisplayVotes)
 		if err != nil {
@@ -244,7 +244,7 @@ func main() {
 				log.Fatal(err)
 			}
 			OptionSubmits = append(OptionSubmits, OptionSubmit{queryToHtml(option_text), votes})
-			fmt.Println("spustila sa vec world")
+
 		}
 		err = rows.Err()
 		if err != nil {

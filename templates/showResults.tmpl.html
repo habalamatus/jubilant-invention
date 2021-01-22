@@ -30,12 +30,10 @@
       </section>
       <div>
         <canvas id="horizontalChart" width="500" height="100"></canvas>
-      <canvas id="pieChart" width="100" height="50"></canvas>
       </div>
       
       <script>
               Chart.plugins.unregister(ChartDataLabels);
-              Chart.defaults.global.legend.display = false;
               var ctx = document.getElementById("horizontalChart");
               /*
                           var myChart = new Chart(ctx, {
@@ -72,6 +70,7 @@
                           */
               new Chart(ctx, {
                 type: "horizontalBar",
+                plugins: [ChartDataLabels],
                 data: {
                   labels: [
                   {{range .OptionsSubmits}}"{{.OptionText}}",{{end}}
@@ -97,59 +96,24 @@
                   scales: {
                     xAxes: [{
                       ticks: {
-                      beginAtZero: true
+                      beginAtZero: true,
+                      stepSize: 1,
                       },
-                    }]
+                    }],
+                    yAxes: [{
+                      gridLines: {
+                          display:false,
+
+                      },
+                      ticks: {
+                        padding: 40,
+                      }
+                    }],
                   },
-                },
-
-              });
-
-              var xxx = document.getElementById("pieChart");
-              var myPieChart = new Chart(xxx, {
-                type: "pie",
-                plugins: [ChartDataLabels],
-                data: {
-                  labels: [
-                  {{range .OptionsSubmits}}"{{.OptionText}}",{{end}}
-                  ],
-                  datasets: [
-                    {
-                      backgroundColor: [
-                        "#3e95cd",
-                        "#8e5ea2",
-                        "#3cba9f",
-                        "#e8c3b9",
-                        "#c45850",
-                      ],
-                      data: [{{range .OptionsSubmits}} {{ .Votes}}, {{end}}],
-                    },
-                  ],
-                },
-                options: {
-          responsive: true,
-          legend: {
-            position: 'bottom',
-          },
-          animation: {
-            animateScale: true,
-            animateRotate: true
-          },
-          tooltips: {
-            callbacks: {
-              label: function(tooltipItem, data) {
-              	var dataset = data.datasets[tooltipItem.datasetIndex];
-                var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
-                  return previousValue + currentValue;
-                });
-                var currentValue = dataset.data[tooltipItem.index];
-                var percentage = Math.floor(((currentValue/total) * 100)+0.5);
-                return percentage + "%";
-              }
-            }
-          },
-          plugins: {
+                  plugins: {
         datalabels: {
+          anchor: 'start',
+        align: 'left',
             formatter: (value, ctx) => {
                 let sum = 0;
                 let dataArr = ctx.chart.data.datasets[0].data;
@@ -157,12 +121,14 @@
                     sum += data;
                 });
                 let percentage = (value*100 / sum).toFixed(0)+"%";
+
                 return percentage;
             },
             color: '#000',
         }
         }
-        },
+                },
+
               });
       </script>
     </main>

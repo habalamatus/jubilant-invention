@@ -6,9 +6,10 @@ import (
 	"log"
 	"net/http"
 	"os"
-
 	"strconv"
 	"strings"
+
+	"github.com/gin-gonic/contrib/gzip"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/heroku/x/hmetrics/onload"
@@ -102,6 +103,7 @@ func main() {
 	}
 
 	router := gin.New()
+	router.Use(gzip.Gzip(gzip.DefaultCompression))
 	router.Use(gin.Logger())
 	router.LoadHTMLGlob("templates/*.tmpl.html")
 	router.Static("/static", "static")

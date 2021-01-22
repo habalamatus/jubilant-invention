@@ -647,14 +647,14 @@ select {
   background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
 }
 
-.bg-purple-600 {
+.bg-blue-600 {
   --tw-bg-opacity: 1;
-  background-color: rgba(124, 58, 237, var(--tw-bg-opacity));
+  background-color: rgba(37, 99, 235, var(--tw-bg-opacity));
 }
 
-.hover\:bg-purple-700:hover {
+.hover\:bg-blue-700:hover {
   --tw-bg-opacity: 1;
-  background-color: rgba(109, 40, 217, var(--tw-bg-opacity));
+  background-color: rgba(29, 78, 216, var(--tw-bg-opacity));
 }
 
 .border-gray-300 {
@@ -662,9 +662,9 @@ select {
   border-color: rgba(209, 213, 219, var(--tw-border-opacity));
 }
 
-.focus\:border-purple-600:focus {
+.focus\:border-blue-600:focus {
   --tw-border-opacity: 1;
-  border-color: rgba(124, 58, 237, var(--tw-border-opacity));
+  border-color: rgba(37, 99, 235, var(--tw-border-opacity));
 }
 
 .rounded {
@@ -915,8 +915,8 @@ select {
 }
 
 .body-bg {
-  background-color: #9921e8;
-  background-image: linear-gradient(315deg, #9921e8 0%, #5f72be 74%);
+  background-color: #090979;
+  background-image: linear-gradient(315deg, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 100%);
 }
 
 @media (min-width: 640px) {

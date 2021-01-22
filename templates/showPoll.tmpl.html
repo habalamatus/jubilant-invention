@@ -19,13 +19,15 @@
         <input type="hidden" name="key" value="{{.key}}">
         
         <div class="mb-6 pt-3">
-          {{range .Options}}<label for="{{.OptionID}}" class="pr-1 text-gray-700">{{.OptionText}}</label>
-          <input type="radio"  name="option" value="{{.OptionID}}">
-          <br>
+          {{range .Options}}
+          <div>
+          <input type="radio"  name="option" value="{{.OptionID}}" id ="{{.OptionID}}">
+          <label for="{{.OptionID}}" class="pr-1 text-gray-700">{{.OptionText}}</label>
+        </div>
         {{end}}
       </div>
         
-        <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit">Submit</button>
+        <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit">Submit</button>
 
     </form>
   </section>

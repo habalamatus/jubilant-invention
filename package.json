@@ -16,6 +16,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tw:build": "tailwindcss build ./main.css -o ./static/main.css",
+    "tw:production": "NODE_ENV=production npx tailwindcss-cli@latest build ./main.css -o ./static/main.css",
     "tw:watch": "onchange 'tailwind.config.js' 'main.css' -- npm run tw:build"
   },
   "repository": {

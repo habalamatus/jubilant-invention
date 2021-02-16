@@ -1,1 +1,3 @@
-# jubilant-invention
+# Ballot
+
+Make polls and vote!

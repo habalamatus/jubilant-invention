@@ -239,17 +239,21 @@ func main() {
 		//sqlStatement += Key
 		//sqlStatement += "}' AND used = FALSE;"
 		//fmt.Println(sqlStatement)
-		row := db.QueryRow("select user_key from userkey natural join question where user_key = '$1' AND used = FALSE AND question_date > now()", key)
 		var userKey string
-		switch err := row.Scan(&userKey); err {
-		case sql.ErrNoRows:
+		err := db.QueryRow("select user_key from userkey natural join question where user_key = $1 AND used = FALSE AND question_date > now()", key).Scan(&userKey)
+		switch {
+		case err == sql.ErrNoRows:
 			fmt.Println("zapinam world")
 			fmt.Println(key)
 			c.HTML(http.StatusOK, "optionSubmited.tmpl.html", gin.H{
 				"OptionSubmited": "Issue with key try again",
 				"Key":            key,
 			})
-		case nil:
+
+		case err != nil:
+			log.Fatalf("query error: %v\n", err)
+
+		default:
 			fmt.Println("Fsetko vporiadku")
 			//UPDATE option SET votes = votes + 1 WHERE option_id = 1;
 			//sqlSubmit := "UPDATE option SET votes = votes + 1 WHERE option_id ="

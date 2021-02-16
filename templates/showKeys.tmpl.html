@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ballot | Show Poll</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css" />
+</head>
+
+<body class="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0" style="font-family:'Lato',sans-serif;">
+    <header class="max-w-lg mx-auto">
+        <a href="/">
+            <h1 class="text-4xl font-bold text-white text-center">Ballot</h1>
+        </a>
+    </header>
+    <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+        <section>
+            <h1>Ballot succesfully created, user keys:</h1>
+            {{range .Keys}}
+            <p>{{.}}</p>
+            {{end}}
+        </section>
+    </main>
+</body>
+
+</html>

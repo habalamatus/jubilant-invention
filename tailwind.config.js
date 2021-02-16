@@ -1,7 +1,7 @@
 module.exports = {
   purge: {
     mode: "layers",
-    content: ["./templates/**/*.html"],
+    content: ["./templates/*.html"],
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -18,5 +18,6 @@ module.exports = {
   variants: {
     extend: {},
   },
+  // eslint-disable-next-line global-require
   plugins: [require("@tailwindcss/forms")],
 };

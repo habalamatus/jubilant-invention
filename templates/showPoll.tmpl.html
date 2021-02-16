@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ballot | Show Poll</title>
   <link rel="stylesheet" type="text/css" href="/static/main.css" />
 </head>
+
 <body class="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0" style="font-family:'Lato',sans-serif;">
-<header class="max-w-lg mx-auto">
-      <a href="/">
-          <h1 class="text-4xl font-bold text-white text-center">Ballot</h1>
-      </a>
+  <header class="max-w-lg mx-auto">
+    <a href="/">
+      <h1 class="text-4xl font-bold text-white text-center">Ballot</h1>
+    </a>
   </header>
   <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
     <section>
-      <h3 class="font-bold text-2xl">{{ .question_text}}</h3>
+      <h3 class="font-bold text-2xl">{{ .questionText}}</h3>
       <form class="flex flex-col" action="/" method="post">
         <input type="hidden" name="key" value="{{.key}}">
-        
+
         <div class="mb-6 pt-3">
           {{range .Options}}
           <div>
-          <input type="radio"  name="option" value="{{.OptionID}}" id ="{{.OptionID}}">
-          <label for="{{.OptionID}}" class="pr-1 text-gray-700">{{.OptionText}}</label>
+            <input type="radio" name="option" value="{{.OptionID}}" id="{{.OptionID}}">
+            <label for="{{.OptionID}}" class="pr-1 text-gray-700">{{.OptionText}}</label>
+          </div>
+          {{end}}
         </div>
-        {{end}}
-      </div>
-        
-        <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit">Submit</button>
 
-    </form>
-  </section>
+        <button
+          class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
+          type="submit">Submit</button>
+
+      </form>
+    </section>
   </main>
 </body>
+
 </html>
